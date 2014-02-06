@@ -1,7 +1,7 @@
-$('div.s9hl').attr("data-toggle", "popover");
+$('div.carR2').attr("data-toggle", "popover");
 
-$('div.s9hl').mouseover(function() {
-  content = $(this).find('a').attr("title");
+$('div.carR2').mouseover(function() {
+  content = $(this).find("font").first().text();;
   content = content + '<br><br><span class="label label-danger">Reciclable</span>';
   content = content + '<span class="label label-success">Reutilizable</span>';
   content = content + '<span class="label label-danger">Biodegradable</span>';
@@ -9,7 +9,7 @@ $('div.s9hl').mouseover(function() {
     trigger: 'hover', 
     placement : 'top',
     html: true,
-    title : 'Información ecológica del producto',
+    title : 'Información ecológica',
     content : content
   });
   
@@ -17,29 +17,6 @@ $('div.s9hl').mouseover(function() {
 });
 
 
-$('div.s9hl').mouseout(function() {
+$('div.carR2').mouseout(function() {
   $(this).css('border','0px solid #f3f3f3');
 });
-
-/*
-var sidebar;
-$('body').css({
-  'padding-right': '350px'
-});
-sidebar = $("<div id='sidebar'></div>");
-sidebar.css({
-  'position': 'fixed',
-  'right': '0px',
-  'top': '0px',
-  'z-index': 9999,
-  'width': '290px',
-  'height': '100%',
-  'background-color': 'blue'  // Confirm it shows up
-});
-
-button = $("<button type='button' class='btn btn-default'>Left</button>");
-
-$('body').append(sidebar);
-$('body').append(button);
-
-*/

@@ -1,14 +1,14 @@
 var content = '';
-$('div.s9hl').mouseover(function() {
-  console.log("mimi");
-  content = $(this).find('a').attr("title");
-  console.log(content);
+$('div.carR2').mouseover(function() {
+  content = $(this).find("font").first().text();
+  im = $(this).find("a").first().find("img").get(0).outerHTML;
+  console.log(im);
   render_panel();
 });
 
 
-$('div.s9hl').mouseout(function() {
-  console.log("sisi");
+$('div.carR2').mouseout(function() {
+  console.log("debug");
 });
 
 
@@ -25,12 +25,12 @@ else {
 
 function render_panel() {
   $('#eco').remove();
-  console.log("hola");
   var sidebar;
-  sidebar = $("<div id='eco' class='panel panel-success'><div class='panel-heading'>EcoFriendly</div>"+
-	      "<div class='panel-body'>"+
-	      "<h4>"+content+"</h4></br>"+
-	      "<table class='table'>"+
+  sidebar = $("<div id='eco' class='panel panel-success'><div class='panel-heading'><h4>Asistente de compras verdes</h4></div>"+
+	      "<div class='panel-body bg-success'>"+
+	      "<h5>"+content+"</h5>"+
+	      im+
+	      "</br></br><table class='table'>"+
 	      "<tr>"+
 	      "<td class='active'>Reciclable</td>"+
 	      "<td class='success'>Reutilizable</td>"+
