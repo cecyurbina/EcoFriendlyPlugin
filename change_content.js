@@ -1,13 +1,38 @@
-var content = '';
+var content = ''; //html in panel
+var sidebar; //panel with ecofriendly information
+var product_selected = 'div.carR2';
+var image; //get the product image
+
+$(product_selected).mouseover(function() {
+  content = $(this).find("font").first().text();
+  image = $(this).find("a").first().find("img").get(0).outerHTML;
+  console.log(image);
+  render_panel();
+});
+
+
+$(product_selected).mouseout(function() {
+  console.log("debug");
+});
+
+
+if($('#eco').length!==0){
+  $('#eco').remove();
+  $('body').css({
+    'padding-right': '0px'
+  });
+}
+else {
+  render_panel();
+}
 
 
 function render_panel() {
   $('#eco').remove();
-  var sidebar;
   sidebar = $("<div id='eco' class='panel panel-success'><div class='panel-heading'><h4>Asistente de compras verdes</h4></div>"+
 	      "<div class='panel-body bg-success'>"+
 	      "<h5>"+content+"</h5>"+
-	      im+
+	      image+
 	      "</br></br><table class='table'>"+
 	      "<tr>"+
 	      "<td class='active'>Reciclable</td>"+
