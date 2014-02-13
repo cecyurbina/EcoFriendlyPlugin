@@ -1,26 +1,4 @@
 var content = '';
-$('div.carR2').mouseover(function() {
-  content = $(this).find("font").first().text();
-  im = $(this).find("a").first().find("img").get(0).outerHTML;
-  console.log(im);
-  render_panel();
-});
-
-
-$('div.carR2').mouseout(function() {
-  console.log("debug");
-});
-
-
-if($('#eco').length!==0){
-  $('#eco').remove();
-  $('body').css({
-    'padding-right': '0px'
-  });
-}
-else {
-  render_panel();
-}
 
 
 function render_panel() {
