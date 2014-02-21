@@ -1,6 +1,6 @@
 var content = ''; //html in panel
 var sidebar; //panel with ecofriendly information
-var product_selected = 'div.carR2';
+var product_selected = 'div.carR2'; // get product in soriana site
 var image; //get the product image
 
 $(product_selected).mouseover(function() {
@@ -10,11 +10,9 @@ $(product_selected).mouseover(function() {
   render_panel();
 });
 
-
 $(product_selected).mouseout(function() {
   console.log("debug");
 });
-
 
 if($('#eco').length!==0){
   $('#eco').remove();
@@ -25,7 +23,6 @@ if($('#eco').length!==0){
 else {
   render_panel();
 }
-
 
 function render_panel() {
   $('#eco').remove();
@@ -52,6 +49,4 @@ function render_panel() {
   });
   
   $('body').append(sidebar);
-  
-
 }
