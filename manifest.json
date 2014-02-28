@@ -1,26 +1,29 @@
 {
+  // Required
   "manifest_version": 2,
-  "name": "Name",
-  "description": "change content.",
-  "version": "3.0",
-  
-  "web_accessible_resources": ["dist/fonts/glyphicons-halflings-regular.eot",
-			       "dist/fonts/glyphicons-halflings-regular.woff", 
-			       "dist/fonts/glyphicons-halflings-regular.ttf",
-			       "dist/fonts/glyphicons-halflings-regular.svg"],
+  "name": "Asistente de compras ecológico",
+  "version": "2.0",
+
+  // Recommended
+  "description": "Plugin que muestra el impacto ecologico de productos",
+  "icons": {},
+
   "browser_action": {
-    "default_icon": "icon2.png"
+    "default_title": "EcoPlugin"
   },
-  "content_scripts": [
+
+  // Optional
+  "author": "Sandra Cecilia Urbina Coronado",
+  "background": {
+    "scripts": ["background.js", "content.js"],
+    "persistent": false
+  },
+  "content_scripts": [ 
     {
-      "matches": ["http://www1.soriana.com/*"],
-      "css": ["dist/css/bootstrap.min.css"],
-      "js": ["jquery-1.10.1.min.js", "dist/js/bootstrap.min.js", "content.js"]
+      "all_frames": true,
+      "matches": [ "http://*/*", "https://*/*" ],
+      "js": [ "js/jquery-2.1.0.min.js", "js/bootstrap.min.js"]
     }
   ],
-
-  "background": {
-    "scripts": ["background.js"]
-  },
-  "permissions": [ "tabs", "http://*/*","<all_urls>", "file://///////*"]
+  "permissions": ["activeTab","tabs", "http://*/*","<all_urls>"]
 }
