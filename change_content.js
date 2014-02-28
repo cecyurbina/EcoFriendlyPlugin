@@ -31,17 +31,18 @@ else {
 
 function render_panel() {
   $('#eco').remove();
-  sidebar = $("<div id='eco' class='panel panel-success'><div class='panel-heading'><h4>Asistente de compras verdes</h4></div>"+
-	      "<div class='panel-body bg-success'>"+
+  sidebar = $("<div id='eco' class='panel panel-success'><div class='panel-heading'><h4><span class='glyphicon glyphicon-shopping-cart'></span> Asistente de compras verdes</h4></div>"+
+	      "<div class='panel-body'>"+
 	      "<h5>"+content+"</h5>"+
 	      image+
 	      "</br></br><table class='table'>"+
 	      "<tr>"+
-	      "<td class='active'>Reciclable</td>"+
-	      "<td class='success'>Reutilizable</td>"+
-	      "<td class='danger'>Biodegradable</td>"+
+	      "<td class='active'><span class='glyphicon glyphicon glyphicon-refresh'></span>Reciclable</td>"+
+	      "<td class='success'><span class='glyphicon glyphicon-repeat'></span>Reutilizable</td>"+
+	      "<td class='danger'><span class='glyphicon glyphicon-leaf'></span>Biodegradable</td>"+
 	      "</tr>"+
 	      "</table>"+
+	      "Certificados <span class='glyphicon glyphicon-certificate'></span>"+
 	      "</div>"+
 	      "<div id='sidebar'></div></div>");
   sidebar.css({
