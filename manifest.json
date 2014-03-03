@@ -21,8 +21,9 @@
   "content_scripts": [ 
     {
       "all_frames": true,
-      "matches": [ "http://*/*", "https://*/*" ],
-      "js": [ "js/jquery-2.1.0.min.js", "js/bootstrap.min.js"]
+      "matches": ["http://www1.soriana.com/*"],
+      "js": [ "js/jquery-2.1.0.min.js", "js/bootstrap.min.js"],
+      "css": ["css/custom.css"]
     }
   ],
   "permissions": ["activeTab","tabs", "http://*/*","<all_urls>"]
