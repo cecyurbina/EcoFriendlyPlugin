@@ -3,6 +3,7 @@ if ($("#boot_css").length == 0){
 }
 
 
+
 var content = ''; //html in panel
 var sidebar; //panel with ecofriendly information
 var product_selected = 'div.carR2'; // get product in soriana site
@@ -45,16 +46,24 @@ function render_panel() {
 	      "Certificados <span class='glyphicon glyphicon-certificate'></span>"+
 	      "</div>"+
 	      "<div id='sidebar'></div></div>");
-  sidebar.css({
+
+  $('body').append(sidebar);
+  $("#eco").toggleClass("hidebar");
+  $("#eco").css({
     'position': 'fixed',
     'right': '0px',
     'top': '0px',
     'z-index': 9999,
     'width': '25%',
     'height': '100%',
+    'transition': 'margin 3s ease'
   });
-  
-  $('body').append(sidebar);
+  $('#eco.hidebar').css({
+    'margin-left': '75%',
+    'width': '20%'
+  });
+
+
 }
 
 
