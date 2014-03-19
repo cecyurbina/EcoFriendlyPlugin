@@ -1,4 +1,84 @@
-#sidebar {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
+/* Side Menu */
+
+#sidebar-wrapper {
+  margin-right: -250px !important;
+  right: 0 !important;
+  width: 250px !important;
+  background: #000 !important;
+  position: fixed !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+  -webkit-transition: all 0.4s ease 0s !important;
+  -moz-transition: all 0.4s ease 0s !important;
+  -ms-transition: all 0.4s ease 0s !important;
+  -o-transition: all 0.4s ease 0s !important;
+  transition: all 0.4s ease 0s !important;
+}
+
+.sidebar-nav {
+  position: absolute !important;
+  top: 0 !important;
+  width: 250px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sidebar-nav li {
+  line-height: 40px !important;
+  text-indent: 20px !important;
+}
+
+.sidebar-nav li a {
+  color: #999999 !important;
+  display: block !important;
+  text-decoration: none !important;
+}
+
+.sidebar-nav li a:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.2) !important;
+  text-decoration: none !important;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none !important;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 55px !important;
+  line-height: 55px !important;
+  font-size: 18px !important;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999 !important;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff !important;
+  background: none !important;
+}
+
+#menu-toggle {
+  top: 0 !important;
+  right: 0 !important;
+  position: fixed !important;
+  z-index: 1 !important;
+}
+
+#sidebar-wrapper.active {
+  right: 250px !important;
+  width: 250px !important;
+  -webkit-transition: all 0.4s ease 0s !important;
+  -moz-transition: all 0.4s ease 0s !important;
+  -ms-transition: all 0.4s ease 0s !important;
+  -o-transition: all 0.4s ease 0s !important;
+  transition: all 0.4s ease 0s !important;
+}
+
+.toggle {
+  margin: 5px 5px 0 0 !important;
 }
