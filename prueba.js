@@ -1,20 +1,13 @@
-var html = ('<a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle">otro</a>' +
+var html = ('<a id="menu-toggle" href="#" class="btn btn-success btn-lg toggle"><span class="glyphicon glyphicon-leaf"></span></a>' +
 	    '<div id="sidebar-wrapper">'+
-            '<ul class="sidebar-nav">'+
-            '<a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle">algo</a>'+
-            '<li class="sidebar-brand"><a href="http://startbootstrap.com">Start Bootstrap</a>'+
-            '</li>'+
-            '<li><a href="#top">Home</a>'+
-            '</li>'+
-            '<li><a href="#about">About</a>'+
-            '</li>'+
-            '<li><a href="#services">Services</a>'+
-            '</li>'+
-            '<li><a href="#portfolio">Portfolio</a>'+
-            '</li>'+
-            '<li><a href="#contact">Contact</a>'+
-            '</li>'+
-            '</ul>'+
+            '<div class="sidebar-nav">'+
+            ''+
+	    '<div class="row title">'+
+	    '<div class="col-md-9"><h4 class="center-title">Asistente de compras ecológicas</h4></div>'+
+	    '<div class="col-md-3"><h4><a id="menu-close" href="#" class="pull-right toggle"><span class="glyphicon glyphicon-chevron-right white"></span></a></h4></div>'+
+	    '</div>'+
+	    ''+
+            '</div>'+
 	    '</div>');
 
 if ($("#boot_css").length == 0){
