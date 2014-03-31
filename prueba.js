@@ -166,6 +166,33 @@ function render_panel() {
 }
 
 function dictionaries(string) {
-var trademark = ["Pam", "Capullo", "Oleico", " Valley Foods", "La gloria", "Cristal"];
-var type = ["aceite", "miel", "vino"];
+  var trademark = ["Pam", "Capullo", "Oleico", " Valley Foods", "La gloria", "Cristal"];
+  var type = ["aceite", "miel", "vino"];
+  var name_array = string.split(' ');
+  var marca ;
+  var tipo;
+  console.log(name_array);
+  $(name_array).each(function(i, name) {
+    console.log(name);
+
+    $(type).each(function(j, t) {
+      console.log(t.search(name));
+      if(t.search(name)) {
+	tipo = t;
+	return false;
+      }
+    });
+    
+    $(trademark).each(function(k, tm) {
+      
+      if(tm.search(name)) {
+	marca = tm;
+	return false;
+      }
+    });
+
+    
+  });
+  console.log("la marca es " + marca+ " y el tipo es "+tipo);
+  
 }
