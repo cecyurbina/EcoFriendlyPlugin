@@ -52,6 +52,7 @@ var table_html = '';
 
 $(product_selected).mouseover(function() {
   content = $(this).find("font").first().text();
+  dictionaries(content);
   image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
   product_title_html = ('<div class="row"><div class="col-xs-12 col-md-12 text-center product-name">'+content+
 			'</div></div>');
@@ -162,4 +163,9 @@ $(product_selected).mouseout(function() {
 
 function render_panel() {
   $("#eco-info").html(html_info);
+}
+
+function dictionaries(string) {
+var trademark = ["Pam", "Capullo", "Oleico", " Valley Foods", "La gloria", "Cristal"];
+var type = ["aceite", "miel", "vino"];
 }
