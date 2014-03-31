@@ -21,7 +21,7 @@
   "content_scripts": [ 
     {
       "all_frames": true,
-      "matches": ["http://www1.soriana.com/*"],
+      "matches": ["http://www1.soriana.com/*", "http://www.hebadomicilio.com.mx/"],
       "js": [ "js/jquery-2.1.0.min.js", "js/bootstrap.min.js"]
     }
   ],
