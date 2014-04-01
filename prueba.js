@@ -166,8 +166,8 @@ function render_panel() {
 }
 
 function dictionaries(string) {
-  var trademark = ["Pam", "Capullo", "Oleico", " Valley Foods", "La gloria", "Cristal"];
-  var type = ["aceite", "miel", "vino"];
+  var trademark = ["Pam", "Capullo", "Oleico", " Valley Foods", "La gloria", "Cristal", "Zucaritas", ""];
+  var type = ["aceite", "miel", "vino", "frijol", "arroz", "cereal"];
   var name_array = string.split(' ');
   var marca ;
   var tipo;
@@ -176,7 +176,7 @@ function dictionaries(string) {
     console.log(name);
 
     $(type).each(function(j, t) {
-      console.log(t.search(name));
+      console.log(t.search(name) != -1);
       if(t.search(name)) {
 	tipo = t;
 	return false;
@@ -185,7 +185,7 @@ function dictionaries(string) {
     
     $(trademark).each(function(k, tm) {
       
-      if(tm.search(name)) {
+      if(tm.search(name) != -1) {
 	marca = tm;
 	return false;
       }
