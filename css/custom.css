@@ -97,6 +97,7 @@
 
 .title {
     background-color: rgba(0, 0, 0, .15)  !important;
+    box-shadow: -1px 1px 5px #888;
 }
 
 .center-title{
