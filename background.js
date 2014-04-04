@@ -10,7 +10,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.insertCSS(null, {
     file : "css/custom.css"
   });
+  chrome.tabs.executeScript(null, {file:"js/jquery-2.1.0.min.js"});
+  chrome.tabs.executeScript(null, {file:"js/bootstrap.min.js"});
   chrome.tabs.executeScript(null, {file:"prueba.js"});
-  
+
 });
 
