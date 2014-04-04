@@ -15,14 +15,14 @@
   // Optional
   "author": "Sandra Cecilia Urbina Coronado",
   "background": {
-    "scripts": ["background.js"/*, "content.js"*/],
+    "scripts": ["background.js", "js/jquery-2.1.0.min.js", "js/bootstrap.min.js"/*, "content.js"*/],
     "persistent": false
   },
   "content_scripts": [ 
     {
       "all_frames": true,
       "js": [ "js/jquery-2.1.0.min.js", "js/bootstrap.min.js"],
-      "matches": ["http://www1.soriana.com/*", "http://www.hebadomicilio.com.mx/", "http://www.walmart.com.mx/*"]
+      "matches": ["http://www1.soriana.com/*", "http://www.hebadomicilio.com.mx/HEBWeb/BusquedaArticulo/Index?idDepartamento=1", "http://www.walmart.com.mx/*"]
 
     }
   ],
