@@ -1,16 +1,21 @@
-//var rows = $('tr').find('td:eq(1)');
-//console.log(rows);
-//rows.css('backgroundColor', '#000');
-
-//$( "table:eq(17)" ).css('backgroundColor', 'yellow');
-//$(  "table:eq(17)" ).css( "border", "10" );
-//$('table:eq(17)').width('50%');
-//console.log($('div#somediv'));
-
-
-//$('.seccion-principal:eq(3) table:eq(0)').css('backgroundColor', 'yellow');
 $('.seccion-principal:eq(3) table:eq(0)').width('85%');
+//$('.tabla-cien-porciento').css('backgroundColor', 'yellow');
 
+
+
+$(".tabla-cien-porciento tr").mouseover(function() {
+  var marca = $(this).find("td").eq(1);
+  marca = marca.find("div").eq(0).html();
+  console.log(marca);
+
+  var image_src = $($(this).find("td").eq(0).find("a").first().find("img").get(0).outerHTML).attr('src');
+  console.log(image_src);
+
+  var product = $(this).find("td").eq(1);
+  product = product.find("div").eq(1).html();
+  console.log(product);
+
+});
 
 
 function random_val()
