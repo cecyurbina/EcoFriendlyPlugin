@@ -1,7 +1,16 @@
-var rows = $('tr');
-console.log(rows);
+//var rows = $('tr').find('td:eq(1)');
+//console.log(rows);
+//rows.css('backgroundColor', '#000');
 
-document.getElementsByTagName("head")[0].innerHTML += '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>';
+//$( "table:eq(17)" ).css('backgroundColor', 'yellow');
+//$(  "table:eq(17)" ).css( "border", "10" );
+//$('table:eq(17)').width('50%');
+//console.log($('div#somediv'));
+
+
+//$('.seccion-principal:eq(3) table:eq(0)').css('backgroundColor', 'yellow');
+$('.seccion-principal:eq(3) table:eq(0)').width('85%');
+
 
 
 function random_val()
