@@ -15,6 +15,8 @@ $(".tabla-cien-porciento tr").mouseover(function() {
   product = product.find("div").eq(1).html();
   console.log(product);
 
+  test(marca +" "+product, image_src);
+
 });
 
 
@@ -63,15 +65,23 @@ $("#menu-toggle").click(function(e) {
 
 var product_selected = 'div.carR2'; // get product in soriana site
 var image_src; //get the product image
-var image_html;
-var html_info = '';
-var product_title_html = '';
-var table_html = '';
 
 $(product_selected).mouseover(function() {
   content = $(this).find("font").first().text();
   dictionaries(content);
   image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
+  test(content, image_src);
+});
+
+$(product_selected).mouseout(function() {
+  console.log("debug");
+});
+
+function test(content, image_src) {
+  var image_html;
+  var html_info = '';
+  var product_title_html = '';
+  var table_html = '';
   product_title_html = ('<div class="row"><div class="col-xs-12 col-md-12 text-center product-name">'+content+
 			'</div></div>');
   image_html = ('<div class="row">'+
@@ -172,14 +182,11 @@ $(product_selected).mouseover(function() {
 	       '</div>'+
 	       '</div>'+
 	       table_html);
-  render_panel();
-});
+  render_panel(html_info);
 
-$(product_selected).mouseout(function() {
-  console.log("debug");
-});
+}
 
-function render_panel() {
+function render_panel(html_info) {
   $("#eco-info").html(html_info);
 }
 
