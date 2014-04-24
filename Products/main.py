@@ -1,17 +1,22 @@
-from flask import Flask
-app = Flask(__name__)
+from google.appengine.ext import webapp
+from google.appengine.ext.webapp import util
 
-# Note: We don't need to call run() since our application is embedded within
-# the App Engine WSGI application server.
-
-
-@app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+class MainHandler(webapp.RequestHandler):
+    def get(self):
+        to = (self.request.get_all("to"))[0]
+        content = (self.request.get_all("content"))[0]
+        self.response.out.write('Para: ' + to)
+        self.response.out.write('<br>Correo enviado')
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    """Return a custom 404 error."""
-    return 'Sorry, nothing at this URL.', 404
+app = webapp.WSGIApplication([('/', MainHandler)],
+                             debug=True)
+
+def main():
+    app = webapp.WSGIApplication([('/', MainHandler)],
+                                 debug=True)
+    util.run_wsgi_app(app)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,4 +1,4 @@
-application: Products
+application: products
 version: 1
 runtime: python27
 api_version: 1
