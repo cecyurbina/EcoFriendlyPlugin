@@ -5,7 +5,7 @@
   margin-right: -250px !important;
   right: 0 !important;
   width: 250px !important;
-  background: #89DC89 !important;
+  background: #05AA67 !important;
   position: fixed !important;
   height: 100% !important;
   overflow-y: auto !important;
@@ -96,7 +96,7 @@
 }
 
 .title {
-    background-color: rgba(0, 0, 0, .15)  !important;
+    background-color: rgba(0, 0, 0, .2)  !important;
     box-shadow: -1px 1px 5px #888;
 }
 
@@ -112,9 +112,15 @@
 }
 
 .product-name {
-    color: #406740;
+    color: #fff;
 }
 
 img.small {
     height:75px !important;
+}
+
+
+.row {
+margin-left: -5px !important;
+margin-right: -15px !important;
 }
