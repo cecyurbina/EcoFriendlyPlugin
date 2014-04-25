@@ -175,8 +175,7 @@ function test(content, image_src) {
       '</div>'
   );
 
-  html_info = ('<br><div class="row"><div class="col-xs-7 col-md-7 text-center product-name">'+content+
-	       '</div>'+
+  html_info = ('<br><div class="row"><div class="col-xs-7 col-md-7 text-center product-name">'+content+'<br>'+ stars_generator()+'</div>'+
 	       '<div class="col-md-5  col-xs-5">'+
 	       '<img src="'+image_src+'" class="small img-rounded">'+
 	       '</div>'+
@@ -220,4 +219,17 @@ function dictionaries(string) {
   });
   console.log("la marca es " + marca+ " y el tipo es "+tipo);
   
+}
+
+function stars_generator() {
+  var stars = '';
+  for (var i=0;i<5;i++){
+    if (Math.round(Math.random())==1) {
+      stars = stars + '<span class="glyphicon glyphicon-star"></span>'
+    }
+    else {
+      stars = stars + '<span class="glyphicon glyphicon-star-empty"></span>'
+    }
+  }
+  return stars;
 }
