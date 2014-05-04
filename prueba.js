@@ -1,36 +1,39 @@
+//BOOTSTRAP CSS ADDED
+if ($("#boot_css").length == 0){
+  $('head').append('<link id="boot_css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
+}
+
+//HEB SITE EVENTS
 $('.seccion-principal:eq(3) table:eq(0)').width('85%');
-//$('.tabla-cien-porciento').css('backgroundColor', 'yellow');
-
-
-
 $(".tabla-cien-porciento tr").mouseover(function() {
   var marca = $(this).find("td").eq(1);
   marca = marca.find("div").eq(0).html();
   console.log(marca);
-
   var image_src = $($(this).find("td").eq(0).find("a").first().find("img").get(0).outerHTML).attr('src');
   console.log(image_src);
-
   var product = $(this).find("td").eq(1);
   product = product.find("div").eq(1).html();
   console.log(product);
-
   test(marca +" "+product, image_src);
-
 });
 
+//SORIANA SITE EVENTS
+var product_selected = 'div.carR2'; // get product in soriana site
+var image_src; //get the product image
+$(product_selected).mouseover(function() {
+  content = $(this).find("font").first().text();
+  dictionaries(content);
+  image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
+  test(content, image_src);
+});
+$(product_selected).mouseout(function() {
+  console.log("debug");
+});
 
-function random_val()
-{
-    return Math.floor(Math.random()*(100-1+1)+1);
+function random_val(){
+  return Math.floor(Math.random()*(100-1+1)+1);
 }
 
-
-
-
-if ($("#boot_css").length == 0){
-  $('head').append('<link id="boot_css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
-}
 
 //sidebar
 var html = ('<a id="menu-toggle" href="#" class="btn btn-success btn-lg toggle"><span class="glyphicon glyphicon-leaf white"></span></a>' +
@@ -62,20 +65,6 @@ $("#menu-toggle").click(function(e) {
   $("#sidebar-wrapper").show();
 });
 //end sidebar
-
-var product_selected = 'div.carR2'; // get product in soriana site
-var image_src; //get the product image
-
-$(product_selected).mouseover(function() {
-  content = $(this).find("font").first().text();
-  dictionaries(content);
-  image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
-  test(content, image_src);
-});
-
-$(product_selected).mouseout(function() {
-  console.log("debug");
-});
 
 function test(content, image_src) {
   var image_html;
