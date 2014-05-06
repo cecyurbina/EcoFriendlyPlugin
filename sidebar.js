@@ -1,3 +1,20 @@
+//SORIANA SITE EVENTS
+var product_selected = 'div.carR2'; // get product in soriana site
+var image_src; //get the product image
+$(product_selected).mouseover(function() {
+  content = $(this).find("font").first().text();
+  dictionaries(content);
+  image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
+  test(content, image_src);
+});
+$(product_selected).mouseout(function() {
+  console.log("debug");
+});
+
+function random_val(){
+  return Math.floor(Math.random()*(100-1+1)+1);
+}
+
 //HEB SITE EVENTS
 $('.seccion-principal:eq(3) table:eq(0)').width('85%');
 $(".tabla-cien-porciento tr").mouseover(function() {
@@ -11,7 +28,6 @@ $(".tabla-cien-porciento tr").mouseover(function() {
   console.log(product);
   test(marca +" "+product, image_src);
 });
-
 
 function sidebar_content(content, image_src) {
   var image_html;
