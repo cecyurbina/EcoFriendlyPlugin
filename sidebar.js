@@ -1,3 +1,18 @@
+//HEB SITE EVENTS
+$('.seccion-principal:eq(3) table:eq(0)').width('85%');
+$(".tabla-cien-porciento tr").mouseover(function() {
+  var marca = $(this).find("td").eq(1);
+  marca = marca.find("div").eq(0).html();
+  console.log(marca);
+  var image_src = $($(this).find("td").eq(0).find("a").first().find("img").get(0).outerHTML).attr('src');
+  console.log(image_src);
+  var product = $(this).find("td").eq(1);
+  product = product.find("div").eq(1).html();
+  console.log(product);
+  test(marca +" "+product, image_src);
+});
+
+
 function sidebar_content(content, image_src) {
   var image_html;
   var html_info = '';
