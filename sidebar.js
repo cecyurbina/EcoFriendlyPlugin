@@ -1,3 +1,9 @@
+//BOOTSTRAP CSS ADDED
+if ($("#boot_css").length == 0){
+  $('head').append('<link id="boot_css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
+}
+
+
 //SORIANA SITE EVENTS
 var product_selected = 'div.carR2'; // get product in soriana site
 var image_src; //get the product image
@@ -5,15 +11,12 @@ $(product_selected).mouseover(function() {
   content = $(this).find("font").first().text();
   dictionaries(content);
   image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
-  test(content, image_src);
+  sidebar_content(content, image_src);
 });
 $(product_selected).mouseout(function() {
   console.log("debug");
 });
 
-function random_val(){
-  return Math.floor(Math.random()*(100-1+1)+1);
-}
 
 //HEB SITE EVENTS
 $('.seccion-principal:eq(3) table:eq(0)').width('85%');
@@ -26,8 +29,45 @@ $(".tabla-cien-porciento tr").mouseover(function() {
   var product = $(this).find("td").eq(1);
   product = product.find("div").eq(1).html();
   console.log(product);
-  test(marca +" "+product, image_src);
+  sidebar_content(marca +" "+product, image_src);
 });
+
+function random_val(){
+  return Math.floor(Math.random()*(100-1+1)+1);
+}
+
+
+//sidebar
+var html = ('<a id="menu-toggle" href="#" class="btn btn-success btn-lg toggle"><span class="glyphicon glyphicon-leaf white"></span></a>' +
+	    '<div id="sidebar-wrapper">'+
+            '<div class="sidebar-nav">'+
+	    '<div class="row title">'+
+	    '<div class="col-xs-9 col-md-9"><h4 class="center-title">Asistente de compras ecológicas</h4></div>'+
+	    '<div class="col-xs-3 col-md-3"><h4><a id="menu-close" href="#" class="pull-right toggle"><span class="glyphicon glyphicon-chevron-right white"></span></a></h4></div>'+
+	    '</div>'+
+	    '<div id="eco-info">'+
+	    '</div>'+
+            '</div>'+
+	    '</div>');
+
+if ($("#menu-toggle").length == 0){
+  $('body').prepend(html);
+}
+
+$("#menu-close").click(function(e) {
+  console.log("cierra");
+  e.preventDefault();
+  $("#sidebar-wrapper").toggleClass("active");
+});
+
+$("#menu-toggle").click(function(e) {
+  console.log("abre");
+  e.preventDefault();
+  $("#sidebar-wrapper").toggleClass("active");
+  $("#sidebar-wrapper").show();
+});
+//end sidebar
+
 
 function sidebar_content(content, image_src) {
   var image_html;
@@ -135,4 +175,53 @@ function sidebar_content(content, image_src) {
 	       table_html);
   render_panel(html_info);
 
+}
+
+function render_panel(html_info) {
+  $("#eco-info").html(html_info);
+}
+
+function dictionaries(string) {
+  var trademark = ["Pam", "Capullo", "Oleico", " Valley Foods", "La gloria", "Cristal", "Zucaritas", ""];
+  var type = ["aceite", "miel", "vino", "frijol", "arroz", "cereal"];
+  var name_array = string.split(' ');
+  var marca ;
+  var tipo;
+  console.log(name_array);
+  $(name_array).each(function(i, name) {
+    console.log(name);
+
+    $(type).each(function(j, t) {
+      console.log(t.search(name) != -1);
+      if(t.search(name)) {
+	tipo = t;
+	return false;
+      }
+    });
+    
+    $(trademark).each(function(k, tm) {
+      
+      if(tm.search(name) != -1) {
+	marca = tm;
+	return false;
+      }
+    });
+
+    
+  });
+  console.log("la marca es " + marca+ " y el tipo es "+tipo);
+  
+}
+
+function stars_generator() {
+  var stars = '';
+  for (var i=0;i<5;i++){
+    if (Math.round(Math.random())==1) {
+      stars = stars + '<span class="glyphicon glyphicon-star"></span>'
+    }
+    else {
+      stars = stars + '<span class="glyphicon glyphicon-star-empty"></span>'
+    }
+  }
+  return stars;
 }

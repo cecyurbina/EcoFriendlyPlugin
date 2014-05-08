@@ -12,7 +12,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   });
   chrome.tabs.executeScript(null, {file:"js/jquery-2.1.0.min.js"});
   chrome.tabs.executeScript(null, {file:"js/bootstrap.min.js"});
-  chrome.tabs.executeScript(null, {file:"prueba.js"});
+  chrome.tabs.executeScript(null, {file:"sidebar.js"});
 
 });
 
