@@ -10,9 +10,14 @@ class Product(db.Model):
 class MainHandler(webapp.RequestHandler):
     def get(self):
         product = (self.request.get_all("product"))[0]
-        self.response.out.write('Product name: ' + product)
-        p = Product(name=product)
-        p.put()
+        s = Product.all()
+        s.filter("name =", product)
+        if s.count() == 0: 
+          p = Product(name=product)
+          p.put()
+          self.response.out.write("%s agregado" %product)
+        else:
+          self.response.out.write("%s ya existia" %product) 
 
 
 app = webapp.WSGIApplication([('/', MainHandler)],
