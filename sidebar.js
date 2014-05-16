@@ -12,6 +12,9 @@ $(product_selected).mouseover(function() {
   dictionaries(content);
   image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
   sidebar_content(content, image_src);
+  $.get( "http://localhost:8080/?product="+content, function( data ) {
+  });
+  
 });
 $(product_selected).mouseout(function() {
   console.log("debug");

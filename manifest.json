@@ -25,5 +25,5 @@
     }
   ],
   "permissions": ["http://www1.soriana.com/*",
-		  "http://www.hebadomicilio.com.mx/HEBWeb/BusquedaArticulo/Index?idDepartamento=1", "http://www.walmart.com.mx/*"]
+		  "http://www.hebadomicilio.com.mx/HEBWeb/BusquedaArticulo/Index?idDepartamento=1", "http://www.walmart.com.mx/*", "http://localhost:8080/*"]
 }
