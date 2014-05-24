@@ -14,7 +14,7 @@
 
   // Optional
   "author": "Sandra Cecilia Urbina Coronado",
-  "content_scripts": [ 
+  "content_scripts": [
     {
       "all_frames": true,
       "css": ["css/custom.css"],
@@ -24,6 +24,9 @@
 
     }
   ],
+  "browser_action": {
+    "default_icon": "icons/icon.png"
+  },
   "permissions": ["http://www1.soriana.com/*",
 		  "http://www.hebadomicilio.com.mx/HEBWeb/BusquedaArticulo/Index?idDepartamento=1", "http://www.walmart.com.mx/*", "http://localhost:8080/*"]
 }
