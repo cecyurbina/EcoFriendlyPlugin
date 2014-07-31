@@ -5,7 +5,7 @@
   margin-right: -250px !important;
   right: 0 !important;
   width: 250px !important;
-  background: #05AA67 !important;
+  background: #E0E0E0 !important;
   position: fixed !important;
   height: 100% !important;
   overflow-y: auto !important;
@@ -96,23 +96,30 @@
 }
 
 .title {
-    background-color: rgba(0, 0, 0, .2)  !important;
+    background-color: rgba(0, 0, 0, .1)  !important;
     box-shadow: -1px 1px 5px #888;
 }
 
 .center-title{
-    color:#fff;
+    color:#009900;
     text-align:center;
     margin-left: 4px;
-    
+    font-size: 17px !important;
 }
 
 .white {
     color: #fff;
 }
 
+.green {
+    color: #009900;
+}
+
+.subtitle {
+    color: #494949 !important;
+}
 .product-name {
-    color: #fff;
+    color: #009900;
 }
 
 img.small {
@@ -123,4 +130,35 @@ img.small {
 .row {
 margin-left: -5px !important;
 margin-right: -15px !important;
+}
+
+#circle {
+    background-color: #ffffff !important;
+    border: 5px solid #009530 !important;
+    border-radius: 80px !important;
+    height: 160px !important;
+    margin: 10px auto !important;
+    padding: 32px 20px !important;
+    text-align: center !important;
+    width: 160px !important;
+    margin-left: 20px !important;
+}
+.centered {
+  display: inline-block;
+  width: 30px;
+  font-size: 60px !important;
+}
+
+.calif-neutra {
+    color: #D58512;
+    font-size: 20px !important;
+}
+.calif-ok {
+    color: #398439;
+    font-size: 20px !important;
+}
+
+.calif-no {
+    color: #D9534F;
+    font-size: 20px !important;
 }

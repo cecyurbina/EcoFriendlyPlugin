@@ -2,19 +2,25 @@
 if ($("#boot_css").length == 0){
   $('head').append('<link id="boot_css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
 }
-
+change_buttons();
 
 //SORIANA SITE EVENTS
 var product_selected = 'div.carR2'; // get product in soriana site
 var image_src; //get the product image
 $(product_selected).mouseover(function() {
-  content = $(this).find("font").first().text();
-  dictionaries(content);
-  image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
-  sidebar_content(content, image_src);
-  $.get( "http://localhost:8080/?product="+content, function( data ) {
-  });
-  
+    content = $(this).find("font").first().text();
+    precio = $(this).find("font:eq(1)").text();
+    dictionaries(content);
+    image_src = $($(this).find("a").first().find("img").get(0).outerHTML).attr('src');
+    $.get( "http://localhost:8080/?product="+content, function( data ) {
+	sidebar_content(content, image_src, data.califecol);
+	if(!$("#sidebar-wrapper").hasClass("active")){
+	    $("#sidebar-wrapper").addClass("active");
+	}
+
+	$("#sidebar-wrapper").show();
+
+    });  
 });
 $(product_selected).mouseout(function() {
   console.log("debug");
@@ -26,12 +32,9 @@ $('.seccion-principal:eq(3) table:eq(0)').width('85%');
 $(".tabla-cien-porciento tr").mouseover(function() {
   var marca = $(this).find("td").eq(1);
   marca = marca.find("div").eq(0).html();
-  console.log(marca);
   var image_src = $($(this).find("td").eq(0).find("a").first().find("img").get(0).outerHTML).attr('src');
-  console.log(image_src);
   var product = $(this).find("td").eq(1);
   product = product.find("div").eq(1).html();
-  console.log(product);
   sidebar_content(marca +" "+product, image_src);
 });
 
@@ -40,13 +43,21 @@ function random_val(){
 }
 
 
+//change buttons
+function change_buttons(){
+    var $eles = $('div[id^="botoncc"]')
+    $eles.each(function() {
+	$(this).replaceWith("<button type='button' class='btn btn-success comprar'>Comprar</button>");
+    });
+}
+
 //sidebar
 var html = ('<a id="menu-toggle" href="#" class="btn btn-success btn-lg toggle"><span class="glyphicon glyphicon-leaf white"></span></a>' +
 	    '<div id="sidebar-wrapper">'+
             '<div class="sidebar-nav">'+
 	    '<div class="row title">'+
-	    '<div class="col-xs-9 col-md-9"><h4 class="center-title">Asistente de compras ecológicas</h4></div>'+
-	    '<div class="col-xs-3 col-md-3"><h4><a id="menu-close" href="#" class="pull-right toggle"><span class="glyphicon glyphicon-chevron-right white"></span></a></h4></div>'+
+	    '<div class="col-xs-9 col-md-9"><h4 class="center-title"><b>Asistente de compras ecológicas</b></h4></div>'+
+	    '<div class="col-xs-3 col-md-3"><h4><a id="menu-close" href="#" class="pull-right toggle"><span class="glyphicon glyphicon-chevron-right green"></span></a></h4></div>'+
 	    '</div>'+
 	    '<div id="eco-info">'+
 	    '</div>'+
@@ -58,13 +69,11 @@ if ($("#menu-toggle").length == 0){
 }
 
 $("#menu-close").click(function(e) {
-  console.log("cierra");
   e.preventDefault();
   $("#sidebar-wrapper").toggleClass("active");
 });
 
 $("#menu-toggle").click(function(e) {
-  console.log("abre");
   e.preventDefault();
   $("#sidebar-wrapper").toggleClass("active");
   $("#sidebar-wrapper").show();
@@ -72,7 +81,7 @@ $("#menu-toggle").click(function(e) {
 //end sidebar
 
 
-function sidebar_content(content, image_src) {
+function sidebar_content(content, image_src, calif) {
   var image_html;
   var html_info = '';
   var product_title_html = '';
@@ -85,98 +94,46 @@ function sidebar_content(content, image_src) {
 		'</div>'+
 		'</div>');
 
-  table_html = ('<table class="table">'+
-		'<thead>'+
-		'<tr>'+
-		'<th>Información <br>ambiental</th>'+
-		'<th><h3><span class="glyphicon glyphicon-globe"></span></h3></th>'+
-		'</tr>'+
-		'</thead>'+
-		'<tr>'+
-		'<td>Energía<h4></h4></td>'+
-		'<td><h4><span class="glyphicon glyphicon-flash"></span></h4></td>'+
-		'</tr>'+
-		'<tr>'+
-		'<th>Agua</th>'+
-		'<td><h4><span class="glyphicon glyphicon-tint"></span></h4></td>'+
-		'</tr>'+
-		'<tr>'+
-		'<th>Social</th>'+
-		'<td><h4><span class="glyphicon glyphicon-heart-empty"></span></h4></td>'+
-		'</tr>'+
-		'<tr>'+
-		'<th>Recursos</th>'+
-		'<td><h4><span class="glyphicon glyphicon-tree-deciduous"></span></h4></td>'+
-		'</tr>'+
-		'</table>');
-  
   table_html = (
     '<br><div class="row">'+
       '<div class="col-xs-12 col-md-12">'+
-      '<h4>Información ambiental <span class="glyphicon glyphicon-globe"></span></h4>'+
-      '</div>'+
-      '</div>'+
-      '<div class="row">'+
-      '<div class="col-xs-6 col-md-6">'+
-      'Energía <span class="glyphicon glyphicon-flash"></span>'+
-      '</div>'+
-      '<div class="col-xs-6 col-md-6">'+
-      '<div class="progress progress-striped active">'+
-      '<div class="progress-bar"  role="progressbar" aria-valuenow="'+ random_val() +'" aria-valuemin="0" aria-valuemax="100" style="width: '+ random_val() +'%">'+
-      '<span class="sr-only">45% Complete</span>'+
-      '</div>'+
-      '</div>'+
-      '</div>'+
-      '</div>'+
-
-      '<div class="row">'+
-      '<div class="col-xs-6 col-md-6">'+
-      'Agua <span class="glyphicon glyphicon-tint"></span>'+
-      '</div>'+
-      '<div class="col-xs-6 col-md-6">'+
-      '<div class="progress progress-striped active">'+
-      '<div class="progress-bar"  role="progressbar" aria-valuenow="'+ random_val() +'" aria-valuemin="0" aria-valuemax="100" style="width: '+ random_val() +'%">'+
-      '<span class="sr-only">45% Complete</span>'+
-      '</div>'+
-      '</div>'+
-      '</div>'+
-      '</div>'+
-
-
-      '<div class="row">'+
-      '<div class="col-xs-6 col-md-6">'+
-      'Social <span class="glyphicon glyphicon-heart-empty"></span>'+
-      '</div>'+
-      '<div class="col-xs-6 col-md-6">'+
-      '<div class="progress progress-striped active">'+
-      '<div class="progress-bar"  role="progressbar" aria-valuenow="'+ random_val() +'" aria-valuemin="0" aria-valuemax="100" style="width: '+ random_val() +'%">'+
-      '<span class="sr-only">45% Complete</span>'+
-      '</div>'+
-      '</div>'+
-      '</div>'+
-      '</div>'+
-
-      '<div class="row">'+
-      '<div class="col-xs-6 col-md-6">'+
-      'Recursos <span class="glyphicon glyphicon-tree-deciduous"></span>'+
-      '</div>'+
-      '<div class="col-xs-6 col-md-6">'+
-      '<div class="progress progress-striped active">'+
-      '<div class="progress-bar"  role="progressbar" aria-valuenow="'+ random_val() +'" aria-valuemin="0" aria-valuemax="100" style="width: '+ random_val() +'%">'+
-      '<span class="sr-only">45% Complete</span>'+
-      '</div>'+
-      '</div>'+
+      '<h4 class="subtitle"><b>Calificación ambiental</b>&nbsp;<span class="glyphicon glyphicon-globe"></span><br><small>Escala del 1 al 10 (El más ecológico tiene un 10)</small></h4>'+
       '</div>'+
       '</div>'
   );
 
-  html_info = ('<br><div class="row"><div class="col-xs-7 col-md-7 text-center product-name">'+content+'<br>'+ stars_generator()+'</div>'+
+  html_info = ('<br><div class="row"><div class="col-xs-7 col-md-7 text-center product-name">'+content+'</div>'+
 	       '<div class="col-md-5  col-xs-5">'+
 	       '<img src="'+image_src+'" class="small img-rounded">'+
 	       '</div>'+
 	       '</div>'+
 	       table_html);
-  render_panel(html_info);
+    html_info = html_info + '<div class="row">'+
+	'<div class="col-xs-12 col-md-12"><div id="circle" class="centered"><b>'+calif+'</b></div></div></div>';
+    html_info = html_info + '<div class="col-xs-12 col-md-12">Factores tomados en cuenta:</div></div>';
+    ///////////////////
+    html_info = html_info + '<div class="col-xs-12 col-md-12"><span class="glyphicon glyphicon-road"></span>&nbsp;Gastos de transportación&nbsp;'
+    temp = calif
+    html_info = asig_calif(html_info)
+    html_info = html_info + '</div></div>'
+    //////////////////
+    html_info = html_info + '<div class="col-xs-12 col-md-12"><span class="glyphicon glyphicon-flash"></span>&nbsp;Ahorro de energía'
+    html_info = asig_calif(html_info)
+    html_info = html_info + '</div></div>'
+    ///////////////////
+    html_info = html_info + '<div class="col-xs-12 col-md-12"><span class="glyphicon glyphicon-tint"></span>&nbsp;Ahorro de agua'
+    html_info = asig_calif(html_info)
+    html_info = html_info + '</div></div>'
+    ///////////////////
+    html_info = html_info + '<div class="col-xs-12 col-md-12"><span class="glyphicon glyphicon-heart"></span>&nbsp;Ayuda a la sociedad'
+    html_info = asig_calif(html_info)
+    html_info = html_info + '</div></div>'
+    ///////////////////
+    html_info = html_info +'<div class="col-xs-12 col-md-12"><span class="glyphicon glyphicon-refresh"></span>&nbsp;Es un producto reciclable'
+    html_info = asig_calif(html_info)
+    html_info = html_info + '</div></div>'
+    /////////
+    render_panel(html_info);
 
 }
 
@@ -190,12 +147,9 @@ function dictionaries(string) {
   var name_array = string.split(' ');
   var marca ;
   var tipo;
-  console.log(name_array);
   $(name_array).each(function(i, name) {
-    console.log(name);
 
     $(type).each(function(j, t) {
-      console.log(t.search(name) != -1);
       if(t.search(name)) {
 	tipo = t;
 	return false;
@@ -212,19 +166,31 @@ function dictionaries(string) {
 
     
   });
-  console.log("la marca es " + marca+ " y el tipo es "+tipo);
-  
 }
 
-function stars_generator() {
-  var stars = '';
-  for (var i=0;i<5;i++){
-    if (Math.round(Math.random())==1) {
-      stars = stars + '<span class="glyphicon glyphicon-star"></span>'
+$(".comprar").click(function(){
+    var r = confirm("Comprar el producto "+content );
+    if (r == true) {
+        $.get( "http://localhost:8080/savep?product="+content+"&precio="+precio, function( data ) {
+	});  
+	$(this).replaceWith("<button type='button' class='btn btn-warning disabled'>Comprado</button>");
+    }
+});
+
+function asig_calif(html_info){
+    if (temp > 0) {
+	if (temp == 1) {
+	    temp = temp - 1
+	    return html_info = html_info + '&nbsp;<span class="glyphicon glyphicon-minus-sign calif-neutra"></span>'
+	}
+	else {
+	    temp = temp - 2
+	    return html_info = html_info + '&nbsp;<span class="glyphicon glyphicon-ok-sign calif-ok"></span>'
+	}
     }
     else {
-      stars = stars + '<span class="glyphicon glyphicon-star-empty"></span>'
+	return html_info = html_info + '&nbsp;<span class="glyphicon glyphicon-remove-sign calif-no"></span>'
     }
-  }
-  return stars;
+
+
 }
